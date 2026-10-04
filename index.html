@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bandhan Shadi Office | Trusted Matchmaking in Jhelum</title>
+  <meta name="description" content="Bandhan Shadi Office, Azeem Road, Kala Gujran, Jhelum. A trusted matchmaking service helping families find the perfect life partner.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    /* Apply saved theme before paint to avoid a flash */
+    (function () {
+      try {
+        var t = localStorage.getItem('bso-theme');
+        if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ================= HEADER / NAV ================= -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="#home" class="brand" aria-label="Bandhan Shadi Office home">
+        <span class="brand-mark">&#10084;</span>
+        <span class="brand-text">Bandhan <small>Shadi Office</small></span>
+      </a>
+
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#find-us">Find Us</a>
+        <a href="#register">Register</a>
+        <a href="#pay-fee">Pay Fee</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to dark mode" title="Toggle light / dark mode">
+          <span class="icon-sun" aria-hidden="true">&#9728;</span>
+          <span class="icon-moon" aria-hidden="true">&#9790;</span>
+        </button>
+        <button id="menu-toggle" class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">Trusted Matchmaking &bull; Jhelum</p>
+        <h1>Where Meaningful Relationships Begin</h1>
+        <p class="hero-sub">
+          At Bandhan Shadi Office, we bring respectful, well-matched families together.
+          Let us help you find a life partner who shares your values, your faith and your dreams.
+        </p>
+        <div class="hero-cta">
+          <a href="#register" class="btn btn-primary">Register Now</a>
+          <a href="#find-us" class="btn btn-ghost">Visit Our Office</a>
+        </div>
+        <ul class="trust-row">
+          <li><strong>100%</strong> Confidential</li>
+          <li><strong>Family</strong> Oriented</li>
+          <li><strong>Personal</strong> Guidance</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= FIND US ================= -->
+    <section id="find-us" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Find Us</h2>
+          <p>Visit our office or reach us directly. We are happy to talk to you and your family.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card contact-card">
+            <h3>Bandhan Shadi Office</h3>
+            <ul class="contact-list">
+              <li>
+                <span class="ci" aria-hidden="true">&#128205;</span>
+                <div><strong>Address</strong><br>Azeem Road, Kala Gujran, Jhelum</div>
+              </li>
+              <li>
+                <span class="ci" aria-hidden="true">&#128222;</span>
+                <div><strong>Phone / WhatsApp / Easypaisa</strong><br><a href="tel:+923335822363">0333-5822363</a></div>
+              </li>
+            </ul>
+            <div class="btn-row">
+              <a class="btn btn-primary" href="tel:+923335822363">&#128222; Click to Call</a>
+              <a class="btn btn-whatsapp" href="https://wa.me/923335822363?text=Assalam%20o%20Alaikum%2C%20I%20would%20like%20to%20know%20more%20about%20Bandhan%20Shadi%20Office."
+                 target="_blank" rel="noopener">WhatsApp Us</a>
+              <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=Azeem+Road+Kala+Gujran+Jhelum"
+                 target="_blank" rel="noopener">Get Directions</a>
+            </div>
+          </div>
+
+          <div class="card map-card">
+            <iframe
+              title="Bandhan Shadi Office location map"
+              src="https://www.google.com/maps?q=Azeem+Road,+Kala+Gujran,+Jhelum&output=embed"
+              width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= REGISTER ================= -->
+    <section id="register" class="section section-alt">
+      <div class="container narrow">
+        <div class="section-head">
+          <h2>Candidate Registration</h2>
+          <p>Fill in the details below. Our team will contact you privately. Fields marked * are required.</p>
+        </div>
+
+        <form id="register-form" class="card form" action="php/register.php" method="POST" enctype="multipart/form-data" novalidate>
+          <!-- Honeypot field: real users never see this -->
+          <div class="hp" aria-hidden="true">
+            <label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          </div>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="full_name">Full Name *</label>
+              <input type="text" id="full_name" name="full_name" required maxlength="80" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="age">Age *</label>
+              <input type="number" id="age" name="age" min="18" max="80" required>
+            </div>
+            <div class="field">
+              <label for="gender">Gender *</label>
+              <select id="gender" name="gender" required>
+                <option value="">Select</option>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="marital_status">Marital Status *</label>
+              <select id="marital_status" name="marital_status" required>
+                <option value="">Select</option>
+                <option>Never Married</option>
+                <option>Divorced</option>
+                <option>Widowed</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="city">City *</label>
+              <input type="text" id="city" name="city" required maxlength="60" autocomplete="address-level2">
+            </div>
+            <div class="field">
+              <label for="phone">Phone / WhatsApp *</label>
+              <input type="tel" id="phone" name="phone" required maxlength="20" placeholder="03XX-XXXXXXX" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label for="education">Education</label>
+              <input type="text" id="education" name="education" maxlength="80">
+            </div>
+            <div class="field">
+              <label for="occupation">Occupation</label>
+              <input type="text" id="occupation" name="occupation" maxlength="80">
+            </div>
+            <div class="field">
+              <label for="religion_sect">Religion / Sect</label>
+              <input type="text" id="religion_sect" name="religion_sect" maxlength="60">
+            </div>
+            <div class="field">
+              <label for="height">Height</label>
+              <input type="text" id="height" name="height" maxlength="20" placeholder="e.g. 5 ft 8 in">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="requirements">Partner Requirements *</label>
+            <textarea id="requirements" name="requirements" rows="4" required maxlength="1000"
+              placeholder="Age range, education, family background, city, any other preferences..."></textarea>
+          </div>
+
+          <div class="field">
+            <label for="photo">Upload Your Photo *</label>
+            <input type="file" id="photo" name="photo" accept="image/jpeg,image/png,image/webp" required>
+            <small class="hint">JPG, PNG or WEBP, maximum 3 MB.</small>
+            <img id="photo-preview" class="preview" alt="Photo preview" hidden>
+          </div>
+
+          <label class="check">
+            <input type="checkbox" name="consent" value="1" required>
+            <span>I confirm the information is true and agree to be contacted by Bandhan Shadi Office. *</span>
+          </label>
+
+          <button type="submit" class="btn btn-primary btn-block">Submit Registration</button>
+          <div class="form-msg" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= PAY FEE ================= -->
+    <section id="pay-fee" class="section">
+      <div class="container narrow">
+        <div class="section-head">
+          <h2>Pay Fee</h2>
+          <p class="notice">Please contact us to confirm your specific fee before making a payment.</p>
+        </div>
+
+        <div class="card pay-card">
+          <div class="currency-row">
+            <span class="cur-label" data-cur="PKR">PKR</span>
+            <button id="currency-toggle" class="switch" type="button" role="switch" aria-checked="false" aria-label="Toggle currency between PKR and USD">
+              <span class="knob"></span>
+            </button>
+            <span class="cur-label" data-cur="USD">USD</span>
+          </div>
+
+          <!--
+            FEE AMOUNTS: Edit the numbers below.
+            data-pkr = amount in Rupees, data-usd = equivalent in US Dollars.
+            These are PLACEHOLDERS only. Confirm your real fees and update them.
+          -->
+          <div class="fee-grid">
+            <div class="fee">
+              <h4>Standard Registration</h4>
+              <p class="amount" data-pkr="5000" data-usd="18">Rs 5,000</p>
+            </div>
+            <div class="fee featured">
+              <h4>Premium Matching</h4>
+              <p class="amount" data-pkr="15000" data-usd="54">Rs 15,000</p>
+            </div>
+            <div class="fee">
+              <h4>Overseas Candidates</h4>
+              <p class="amount" data-pkr="25000" data-usd="90">Rs 25,000</p>
+            </div>
+          </div>
+          <p class="hint center">Amounts shown are for reference. Final fee is confirmed by our office.</p>
+
+          <div class="easypaisa">
+            <div class="ep-badge">Easypaisa</div>
+            <div>
+              <p class="ep-label">Send payment to Easypaisa number</p>
+              <p class="ep-number" id="ep-number">0333-5822363</p>
+              <p class="ep-name">Account: Bandhan Shadi Office</p>
+            </div>
+            <button type="button" id="copy-number" class="btn btn-ghost" data-copy="03335822363">Copy Number</button>
+          </div>
+
+          <h3 class="sub-title">Already paid? Submit your proof</h3>
+          <form id="payment-form" class="form" action="php/payment.php" method="POST" enctype="multipart/form-data" novalidate>
+            <div class="hp" aria-hidden="true">
+              <label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="pay_name">Your Name *</label>
+                <input type="text" id="pay_name" name="pay_name" required maxlength="80">
+              </div>
+              <div class="field">
+                <label for="pay_phone">Your Phone *</label>
+                <input type="tel" id="pay_phone" name="pay_phone" required maxlength="20">
+              </div>
+              <div class="field">
+                <label for="tid">Transaction ID (TID) *</label>
+                <input type="text" id="tid" name="tid" required maxlength="30" pattern="[A-Za-z0-9\-]{6,30}" placeholder="e.g. 12345678901">
+              </div>
+              <div class="field">
+                <label for="amount_paid">Amount Sent *</label>
+                <input type="text" id="amount_paid" name="amount_paid" required maxlength="20" placeholder="e.g. Rs 5000">
+              </div>
+            </div>
+            <div class="field">
+              <label for="screenshot">Payment Screenshot *</label>
+              <input type="file" id="screenshot" name="screenshot" accept="image/jpeg,image/png,image/webp" required>
+              <small class="hint">JPG, PNG or WEBP, maximum 3 MB.</small>
+              <img id="shot-preview" class="preview" alt="Screenshot preview" hidden>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Submit Payment Proof</button>
+            <div class="form-msg" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container foot-inner">
+      <div>
+        <strong>Bandhan Shadi Office</strong><br>
+        Azeem Road, Kala Gujran, Jhelum<br>
+        <a href="tel:+923335822363">0333-5822363</a>
+      </div>
+      <div class="foot-links">
+        <a href="#home">Home</a>
+        <a href="#find-us">Find Us</a>
+        <a href="#register">Register</a>
+        <a href="#pay-fee">Pay Fee</a>
+      </div>
+    </div>
+    <p class="copy">&copy; <span id="year"></span> Bandhan Shadi Office. All rights reserved.</p>
+  </footer>
+
+  <!-- ================================================================
+       CHATBOT PLACEHOLDER
+       Paste your customer support chatbot script/embed code below this
+       comment (just before </body>) when you are ready. Example:
+       <script src="https://your-chatbot-provider.com/widget.js" async></script>
+       ================================================================ -->
+  <div id="chatbot-placeholder"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
