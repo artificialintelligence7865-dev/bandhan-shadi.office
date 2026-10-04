@@ -114,22 +114,72 @@
   wirePreview('#photo', '#photo-preview');
   wirePreview('#screenshot', '#shot-preview');
 
-  /* ---------- AJAX form submission ---------- */
+  /* ---------- WhatsApp form submission (no server needed, works on GitHub Pages) ---------- */
+  var WHATSAPP_NUMBER = '923335822363'; // international format, no + or leading zero
+
+  // Read a field value; empty optional fields show as "-"
+  function val(form, name) {
+    var el = form.elements[name];
+    var v = el && el.value ? String(el.value).trim().replace(/\s+/g, ' ') : '';
+    return v || '-';
+  }
+
+  // Each builder returns the full WhatsApp message text for its form
+  var messageBuilders = {
+    'register-form': function (f) {
+      return [
+        '*Bandhan Shadi Office - New Registration*',
+        '*بندھن شادی آفس - نئی رجسٹریشن*',
+        '',
+        '- Name / نام: ' + val(f, 'full_name'),
+        '- Age / عمر: ' + val(f, 'age'),
+        '- Gender / جنس: ' + val(f, 'gender'),
+        '- Marital Status / ازدواجی حیثیت: ' + val(f, 'marital_status'),
+        '- City / شہر: ' + val(f, 'city'),
+        '- Phone / فون نمبر: ' + val(f, 'phone'),
+        '- Education / تعلیم: ' + val(f, 'education'),
+        '- Occupation / پیشہ: ' + val(f, 'occupation'),
+        '- Religion/Sect / مذہب و مسلک: ' + val(f, 'religion_sect'),
+        '- Height / قد: ' + val(f, 'height'),
+        '- Requirements / رشتے کی ضروریات: ' + val(f, 'requirements'),
+        '',
+        'Note: Please attach the candidate photo in this chat.',
+        'نوٹ: براہِ کرم اسی چیٹ میں امیدوار کی تصویر بھی بھیج دیں۔'
+      ].join('\n');
+    },
+    'payment-form': function (f) {
+      return [
+        '*Bandhan Shadi Office - Payment Proof*',
+        '*بندھن شادی آفس - ادائیگی کی تفصیل*',
+        '',
+        '- Name / نام: ' + val(f, 'pay_name'),
+        '- Phone / فون نمبر: ' + val(f, 'pay_phone'),
+        '- Easypaisa TID / ٹرانزیکشن آئی ڈی: ' + val(f, 'tid'),
+        '- Amount Sent / رقم: ' + val(f, 'amount_paid'),
+        '',
+        'Note: Please attach the payment screenshot in this chat.',
+        'نوٹ: براہِ کرم اسی چیٹ میں ادائیگی کا اسکرین شاٹ بھی بھیج دیں۔'
+      ].join('\n');
+    }
+  };
+
   function wireForm(formSel) {
     var form = $(formSel);
     if (!form) return;
     var msg = $('.form-msg', form);
-    var btn = $('button[type="submit"]', form);
+    var build = messageBuilders[form.id];
 
     function show(text, ok) {
       msg.textContent = text;
       msg.className = 'form-msg show ' + (ok ? 'ok' : 'err');
-      msg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
     form.addEventListener('submit', function (e) {
-      e.preventDefault();
+      e.preventDefault();               // stop the normal form post
       msg.className = 'form-msg';
+
+      // Honeypot: silently ignore bots
+      if (form.elements['website'] && form.elements['website'].value) return;
 
       if (!form.checkValidity()) {
         $$('input,select,textarea', form).forEach(function (el) {
@@ -140,30 +190,15 @@
       }
       $$('.invalid', form).forEach(function (el) { el.classList.remove('invalid'); });
 
-      var original = btn.textContent;
-      btn.disabled = true; btn.textContent = 'Sending...';
+      var message = build(form);
+      var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
 
-      fetch(form.getAttribute('action'), {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      })
-        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, body: j }; }); })
-        .then(function (res) {
-          if (res.ok && res.body.success) {
-            show(res.body.message || 'Submitted successfully.', true);
-            form.reset();
-            $$('.preview', form).forEach(function (p) { p.hidden = true; });
-          } else {
-            show((res.body && res.body.message) || 'Something went wrong. Please try again.', false);
-          }
-        })
-        .catch(function () {
-          show('Network error. Please check your connection or contact us on WhatsApp.', false);
-        })
-        .finally(function () {
-          btn.disabled = false; btn.textContent = original;
-        });
+      // Opened directly inside the click handler so popup blockers allow it
+      var win = window.open(url, '_blank');
+      if (!win) { window.location.href = url; } // fallback if the popup was blocked
+
+      show('WhatsApp is opening with your details. Please press Send, and attach the ' +
+           (form.id === 'register-form' ? 'photo' : 'payment screenshot') + ' in the chat.', true);
     });
   }
   wireForm('#register-form');
